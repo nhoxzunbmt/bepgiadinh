@@ -1,6 +1,11 @@
 <template>
   <div class="home">
         <post-item :posts="posts"></post-item>
+        <ul>
+          <li v-for="cat in categories" :key="cat.id">
+            {{ cat.name }}
+          </li>
+        </ul>
   </div>
 </template>
 
@@ -12,7 +17,10 @@ export default {
   },
   computed: {
     posts() {
-      return this.$store.getters.posts
+      return this.$store.getters.posts;
+    },
+    categories() {
+      return this.$store.getters.categories;
     }
   }
 };

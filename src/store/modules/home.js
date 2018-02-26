@@ -11,26 +11,40 @@ const state = {
       ex: "Mota 2"
     }
   ],
-  page: 1
+  page: 1,
+  categories: [
+    {
+      id: 1,
+      name: "Mon ngon",
+      ex: "Mota 1"
+    },
+    {
+      id: 2,
+      name: "Mon Man",
+      ex: "Mota 2"
+    }
+  ]
 }
 
 const mutations = {
-  'GET_POSTS' (state,posts){
+  'GET_POSTS'(state, posts) {
     state.posts = posts
   }
 }
 
 const actions = {
   loadMore: ({ commit }, order) => {
-    commit('LOAD_MORE',order);
+    commit('LOAD_MORE', order);
   }
 };
 
 const getters = {
   posts: state => {
-    console.log( state.posts );
-     return state.posts
-   }
+    return state.posts
+  },
+  categories: state => {
+    return state.categories
+  }
 }
 
 export default {
