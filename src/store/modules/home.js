@@ -1,22 +1,35 @@
 const state = {
-  stocks: []
+  posts: [
+    {
+      id: 1,
+      title: "Bai so 1",
+      ex: "Mota 1"
+    },
+    {
+      id: 2,
+      title: "Bai so 2",
+      ex: "Mota 2"
+    }
+  ],
+  page: 1
 }
 
 const mutations = {
-  'SET_STOCKS' (state,stocks){
-    state.stocks = stocks
+  'GET_POSTS' (state,posts){
+    state.posts = posts
   }
 }
 
 const actions = {
-  buyStock: ({ commit }, order) => {
-    commit('BUY_STOCK',order);
+  loadMore: ({ commit }, order) => {
+    commit('LOAD_MORE',order);
   }
 };
 
 const getters = {
-   stocks: state => {
-     return state.stocks
+  posts: state => {
+    console.log( state.posts );
+     return state.posts
    }
 }
 
