@@ -6,6 +6,7 @@
             {{ cat.name }}
           </li>
         </ul>
+        {{ statedata }}
   </div>
 </template>
 
@@ -21,6 +22,9 @@ export default {
     },
     categories() {
       return this.$store.getters.categories;
+    },
+    statedata(){
+      return this.$store.state.mdpost
     }
   }
 };

@@ -1,4 +1,5 @@
 const state = {
+  module: 'post',
   posts: [
     {
       id: 1,
@@ -11,19 +12,7 @@ const state = {
       ex: "Mota 2"
     }
   ],
-  page: 1,
-  categories: [
-    {
-      id: 1,
-      name: "Mon ngon",
-      ex: "Mota 1"
-    },
-    {
-      id: 2,
-      name: "Mon Man",
-      ex: "Mota 2"
-    }
-  ]
+  page: 1
 }
 
 const mutations = {
@@ -41,9 +30,6 @@ const actions = {
 const getters = {
   posts: state => {
     return state.posts
-  },
-  categories: state => {
-    return state.categories
   }
 }
 
