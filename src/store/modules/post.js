@@ -20,8 +20,8 @@ const actions = {
     })
   },
   getPosts: ({ commit }, payload) => {
-    Vue.localStorage.set('someNumber', 123)
     
+
     axios.get(`${API_BASE}wp/v2/posts?order=desc`).then(response => {
       console.log(response.data)
       commit('GET_POSTS', response.data)
@@ -46,6 +46,7 @@ const mutations = {
     state.post = post
   },
   'GET_POSTS'(state, posts) {
+    Vue.localStorage.set('getPosts', posts)
     state.posts = posts
   },
   'LOAD_MORE'(state, posts) {
