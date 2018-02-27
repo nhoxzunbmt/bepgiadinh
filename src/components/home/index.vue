@@ -6,7 +6,9 @@
             {{ cat.name }}
           </li>
         </ul>
-        {{ statedata }}
+
+
+      <a href="#" @click="loadMore">Load More</a>
   </div>
 </template>
 
@@ -22,9 +24,18 @@ export default {
     },
     categories() {
       return this.$store.getters.categories;
-    },
-    statedata(){
-      return this.$store.state.mdpost
+    }
+  },
+  created() {
+    if (this.posts.length === 0) {
+      this.$store.dispatch("getPosts");
+    }
+    this.$store.dispatch("getCategories");
+  },
+  methods : {
+    loadMore(){
+      let next_page = this.$store.getters.page + 1;
+      this.$store.dispatch("loadMore",next_page);
     }
   }
 };

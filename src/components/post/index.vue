@@ -5,7 +5,7 @@
          <app-bookmark></app-bookmark>
          <app-love></app-love>
         </div>
-        Post - {{ post.title }}
+        Post - {{ post.title.rendered }}
 
         <div class="content">
 
@@ -30,23 +30,15 @@ export default {
     id() {
       return this.$route.params.id;
     },
-    posts() {
-      return [
-        {
-          id: 1,
-          title: "Bai so 1",
-          ex: "Mota 1"
-        },
-        {
-          id: 2,
-          title: "Bai so 2",
-          ex: "Mota 2"
-        }
-      ];
-    },
     post() {
-      return this.posts.find(elm => elm.id == this.id);
+         return this.$store.getters.post;
     }
+  },
+  created() {
+
+      this.$store.dispatch("getPost",this.$route.params.id);
+   
+
   }
 };
 </script>

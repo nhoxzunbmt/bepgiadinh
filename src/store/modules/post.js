@@ -1,35 +1,58 @@
+import axios from 'axios'
+const API_BASE = process.env.API_URL;
+
 const state = {
   module: 'post',
-  posts: [
-    {
-      id: 1,
-      title: "Bai so 1",
-      ex: "Mota 1"
-    },
-    {
-      id: 2,
-      title: "Bai so 2",
-      ex: "Mota 2"
-    }
-  ],
+  posts: [],
+  post: [],
   page: 1
 }
 
+const actions = {
+  getPost: ({ commit }, id) => {
+    axios.get(`${API_BASE}wp/v2/posts/${id}`).then(response => {
+      console.log(response.data)
+      commit('GET_POST', response.data)
+    })
+  },
+  getPosts: ({ commit }, payload) => {
+    axios.get(`${API_BASE}wp/v2/posts?order=desc`).then(response => {
+      console.log(response.data)
+      commit('GET_POSTS', response.data)
+    })
+  },
+  loadMore: ({ commit }, page) => {
+    axios.get(`${API_BASE}wp/v2/posts?order=desc&page=${page}`).then(response => {
+      console.log(response.data)
+      commit('LOAD_MORE', response.data)
+    })
+  },
+  searchPost:({ commit }, keyword) => {
+    axios.get(`${API_BASE}wp/v2/posts?order=desc&search=${keyword}`).then(response => {
+      console.log(response.data)
+      commit('GET_POSTS', response.data)
+    })
+  },
+};
+
 const mutations = {
+  'GET_POST'(state, post) {
+    state.post = post
+  },
   'GET_POSTS'(state, posts) {
     state.posts = posts
+  },
+  'LOAD_MORE'(state, posts) {
+    state.posts.push(posts)
   }
 }
 
-const actions = {
-  loadMore: ({ commit }, order) => {
-    commit('LOAD_MORE', order);
-  }
-};
-
 const getters = {
-  posts: state => {
-    return state.posts
+  post: (state) => {
+    return state.post
+   },
+  posts: (state) => {
+   return state.posts
   }
 }
 

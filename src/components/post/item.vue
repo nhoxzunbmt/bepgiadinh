@@ -1,7 +1,8 @@
 <template>
     <div>
         <p v-for="post in posts" :key="post.id">
-            {{ post.title }}
+            
+            {{ post.title.rendered }}
             
             <router-link :to="{ name: 'Post', params: { id: post.id }}">Xem</router-link>
         </p>
