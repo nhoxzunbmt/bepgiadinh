@@ -1,4 +1,6 @@
 import axios from 'axios'
+import Vue from 'vue'
+
 const API_BASE = process.env.API_URL;
 
 const state = {
@@ -8,6 +10,8 @@ const state = {
   page: 1
 }
 
+
+
 const actions = {
   getPost: ({ commit }, id) => {
     axios.get(`${API_BASE}wp/v2/posts/${id}`).then(response => {
@@ -16,6 +20,8 @@ const actions = {
     })
   },
   getPosts: ({ commit }, payload) => {
+    Vue.localStorage.set('someNumber', 123)
+    
     axios.get(`${API_BASE}wp/v2/posts?order=desc`).then(response => {
       console.log(response.data)
       commit('GET_POSTS', response.data)
@@ -43,7 +49,8 @@ const mutations = {
     state.posts = posts
   },
   'LOAD_MORE'(state, posts) {
-    state.posts.push(posts)
+    state.posts = posts
+    state.page += 1
   }
 }
 
@@ -53,7 +60,10 @@ const getters = {
    },
   posts: (state) => {
    return state.posts
-  }
+  },
+  page:(state) => {
+    return state.page
+   }
 }
 
 export default {

@@ -24,6 +24,9 @@ export default {
     },
     categories() {
       return this.$store.getters.categories;
+    },
+    page(){
+      return this.$store.getters.page;
     }
   },
   created() {
@@ -34,7 +37,7 @@ export default {
   },
   methods : {
     loadMore(){
-      let next_page = this.$store.getters.page + 1;
+      let next_page = this.page + 1;
       this.$store.dispatch("loadMore",next_page);
     }
   }
