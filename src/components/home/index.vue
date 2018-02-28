@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+  
         <post-item :posts="posts"></post-item>
         <ul>
           <li v-for="cat in categories" :key="cat.id">

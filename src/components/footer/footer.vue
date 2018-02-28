@@ -10,9 +10,12 @@
     }
 </script>
 
-<style scoped>
-    .footer p{
-        background-color:aqua;
-        color:#FFF
+<style lang="scss" scoped>
+    .footer{
+         p{
+             background-color:aqua;
+                color:#FFF
+         }
+        
     }
 </style>

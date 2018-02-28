@@ -1,6 +1,6 @@
 <template>
     <div>
-        <a class="btn btn-default" href="/">Back</a>
+        
     </div>
 </template>
 

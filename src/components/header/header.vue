@@ -1,17 +1,23 @@
 <template>
-    <div>
-        <p class="header">Header</p>
-
+    <div v-if="isShowNavbar">
+        <app-navbar></app-navbar>
         <app-search></app-search>
     </div>
 </template>
 
 <script>
 import Search from "@/components/header/search";
+import Navbar from "@/components/header/navbar";
 export default {
   components: {
-    AppSearch: Search
-  }
+    AppSearch: Search,
+    AppNavbar: Navbar
+  },
+  computed: {
+    isShowNavbar() {
+      return this.$store.getters.isShowNavbar;
+    }
+  },
 };
 </script>
 

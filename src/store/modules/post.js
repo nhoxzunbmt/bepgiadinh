@@ -15,28 +15,31 @@ const state = {
 const actions = {
   getPost: ({ commit }, id) => {
     axios.get(`${API_BASE}wp/v2/posts/${id}`).then(response => {
-      console.log(response.data)
+
       commit('GET_POST', response.data)
     })
   },
   getPosts: ({ commit }, payload) => {
-    
-
     axios.get(`${API_BASE}wp/v2/posts?order=desc`).then(response => {
-      console.log(response.data)
+
       commit('GET_POSTS', response.data)
     })
   },
   loadMore: ({ commit }, page) => {
     axios.get(`${API_BASE}wp/v2/posts?order=desc&page=${page}`).then(response => {
-      console.log(response.data)
+
       commit('LOAD_MORE', response.data)
     })
   },
-  searchPost:({ commit }, keyword) => {
+  searchPost: ({ commit }, keyword) => {
     axios.get(`${API_BASE}wp/v2/posts?order=desc&search=${keyword}`).then(response => {
-      console.log(response.data)
+
       commit('GET_POSTS', response.data)
+    })
+  },
+  lovePost: ({ commit }, post_id) => {
+    axios.get(`${API_BASE}wp/v2/posts/${post_id}`).then(response => {
+      commit('LOVE_POST', response.data)
     })
   },
 };
@@ -52,19 +55,30 @@ const mutations = {
   'LOAD_MORE'(state, posts) {
     state.posts = posts
     state.page += 1
+  },
+  'LOVE_POST'(state, post) {
+    let love_posts = Vue.localStorage.get('love_posts');
+    if (!love_posts) {
+      love_posts = [post.id];
+    }
+    else {
+      love_posts = love_posts.push(post.id)
+    }
+
+    Vue.localStorage.set('love_posts', love_posts)
   }
 }
 
 const getters = {
   post: (state) => {
     return state.post
-   },
-  posts: (state) => {
-   return state.posts
   },
-  page:(state) => {
+  posts: (state) => {
+    return state.posts
+  },
+  page: (state) => {
     return state.page
-   }
+  }
 }
 
 export default {

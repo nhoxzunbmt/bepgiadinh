@@ -1,19 +1,32 @@
 <template>
     <div>
-        <a href="#" @click="bookmark">Bookmark</a>
+        <a href="#" @click.prevent="bookmarkPost" :class="bookmarkd">Bookmark</a>
     </div>
 </template>
 
 <script>
-    export default {
-        methods : {
-            bookmark (){
-                alert('Bookmarked')
-            }
-        }
+export default {
+  data() {
+    return {
+      isbookmark: false
+    };
+  },
+  computed: {
+    bookmarkd() {
+      return this.isbookmark == true ? "bookmarkd" : "";
     }
+  },
+  methods: {
+    bookmarkPost() {
+      this.isbookmark = true;
+      alert('bookmarkd')
+    }
+  }
+};
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.bookmarkd {
+  color: red;
+}
 </style>
