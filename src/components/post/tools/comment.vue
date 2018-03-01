@@ -1,11 +1,12 @@
 <template>
-    
     <div>
         <ul v-if="comments">
             <li v-for="comment in comments" :key="comment.id">
                 <div v-html="comment.content.rendered"></div>
             </li>
         </ul>
+        <br>
+        {{ user }}
         <br>
         <textarea v-model="message" placeholder="add multiple lines" width="100%"></textarea>
         <br>
@@ -32,6 +33,9 @@ export default {
   computed: {
     comments() {
       return this.$store.getters.comments;
+    },
+    user() {
+      return this.$store.getters.user;
     }
   },
   created() {
@@ -39,18 +43,22 @@ export default {
       post_id: this.comment_post_ID
     };
     this.$store.dispatch("getComments", payload);
+
+    this.$store.dispatch("getCurrentUser");
   },
   methods: {
     comment() {
       const payload_comment = {
-        content: this.comment,
-        post: this.comment_post_ID
+        content: this.message,
+        post: this.comment_post_ID,
+        token: this.user.token
       };
+      console.log(payload_comment);
       this.$store.dispatch("addComment", payload_comment);
-      this.reset();
+      //this.reset();
     },
     reset() {
-      this.comment = "";
+      this.message = "";
     }
   }
 };

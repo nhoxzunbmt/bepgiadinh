@@ -27,7 +27,7 @@ const actions = {
     getComments: ({ commit }, payload) => {
         commit(COMMENTS_BY_POST);
         axios.get(`${API_BASE}wp/v2/comments?post=${payload.post_id}`).then(response => {
-            console.log('getComments',response.data);
+            console.log('getComments', response.data);
             commit(COMMENTS_BY_POST_SUCCESSS, response.data)
         })
     },
@@ -44,9 +44,36 @@ const actions = {
     },
     addComment: ({ commit }, payload) => {
         commit(ADD_COMMENT)
-        axios.post(`${API_BASE}wp/v2/comments/`, payload).then(response => {
+        const wp_username = 'thanhloi@ringier.com.vn'
+        const wp_password = '530825'
+        const config2 = {
+            headers : {
+                'Authorization': 'Basic ' + btoa(wp_username + ":" + wp_password)
+            }
+        };
+        const config = {
+            auth: {
+                username: wp_username,
+                password: wp_password
+            },
+        }
+        const config3 = {
+          
+                username: wp_username,
+                password: wp_password
+           
+        }
+        const config4 = {
+            headers : {
+                'Authorization': 'Bearer ' + payload.token
+            }
+        };
+
+        
+        axios.post(`${API_BASE}wp/v2/comments/`, payload, config4).then(response => {
             commit(ADD_COMMENT_SUCCESSS, response.data)
         })
+
     },
 };
 
@@ -81,7 +108,15 @@ const mutations = {
     COMMENTS_BY_POST_SUCCESSS(state, payload) {
         state.isLoading = true
         state.comments = payload
-        console.log(COMMENTS_BY_POST_SUCCESSS,payload)
+        console.log(COMMENTS_BY_POST_SUCCESSS, payload)
+    },
+    ADD_COMMENT(state) {
+        state.isLoading = true
+    },
+    ADD_COMMENT_SUCCESSS(state, payload) {
+        state.isLoading = false
+        state.comments.push(payload)
+
     }
 }
 

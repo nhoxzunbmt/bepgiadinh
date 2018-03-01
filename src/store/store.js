@@ -6,6 +6,7 @@ import Vuex from 'vuex'
 import post from './modules/post'
 import category from './modules/category'
 import comment from './modules/comment';
+import auth from './modules/auth';
 
 Vue.use(Vuex)
 
@@ -39,6 +40,7 @@ export default new Vuex.Store({
     modules: {
         mdpost: post,
         mdcategory: category,
-        mdcomment: comment
+        mdcomment: comment,
+        mdauth: auth
     }
 })

@@ -31,9 +31,7 @@ export default {
     }
   },
   created() {
-    if (this.posts.length === 0) {
-      this.$store.dispatch("getPosts");
-    }
+    this.$store.dispatch("getPosts");
     this.$store.dispatch("getCategories");
   },
   methods : {

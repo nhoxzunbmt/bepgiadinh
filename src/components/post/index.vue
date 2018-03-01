@@ -24,7 +24,9 @@
             </div> -->
             <h2>Bình luận</h2>
             <app-comment :comment_post_ID="post.id"></app-comment>
-            app
+
+            <app-login></app-login>
+            
         </div>
 
  
@@ -38,13 +40,15 @@ import Bookmark from "@/components/post/tools/bookmark";
 import Love from "@/components/post/tools/love";
 import Stars from "@/components/post/tools/stars";
 import Comment from '@/components/post/tools/comment';
+import Login from '@/components/login';
 export default {
   components: {
     AppBack: Back,
     AppLove: Love,
     AppBookmark: Bookmark,
     AppStars: Stars,
-    AppComment: Comment
+    AppComment: Comment,
+    AppLogin : Login
   },
   computed: {
     id() {
