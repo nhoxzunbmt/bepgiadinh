@@ -5,15 +5,15 @@ const API_BASE = process.env.API_URL;
 
 const state = {
   module: 'post',
-  posts: [],
-  post: [],
-  page: 1
+  posts: null,
+  post: null,
 }
 
 
 
 const actions = {
   getPost: ({ commit }, id) => {
+    state.isLoading = true;
     axios.get(`${API_BASE}wp/v2/posts/${id}`).then(response => {
 
       commit('GET_POST', response.data)
@@ -47,6 +47,7 @@ const actions = {
 const mutations = {
   'GET_POST'(state, post) {
     state.post = post
+    state.isLoading = false
   },
   'GET_POSTS'(state, posts) {
     Vue.localStorage.set('getPosts', posts)
@@ -75,9 +76,6 @@ const getters = {
   },
   posts: (state) => {
     return state.posts
-  },
-  page: (state) => {
-    return state.page
   }
 }
 

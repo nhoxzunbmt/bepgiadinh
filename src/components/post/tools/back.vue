@@ -1,12 +1,19 @@
 <template>
     <div>
-        <a class="btn btn-default" href="/">Back</a>
+        <a class="btn btn-default" href="#" @click.prevent="back">Back</a>
     </div>
 </template>
 
 <script>
     export default {
-        
+        methods:{
+            back(){
+                this.$router.push({
+                    name: 'Home', 
+                    params: {}
+                });
+            }
+        }
     }
 </script>
 

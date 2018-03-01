@@ -26,6 +26,9 @@ export default {
       }
     }
   },
+  created() {
+    this.$store.dispatch("hideNavbar", false);
+  },
   methods: {
     getExcerpt: function(post) {
       if (_.isUndefined(post.excerpt.rendered))

@@ -3,9 +3,8 @@ const API_BASE = process.env.API_URL;
 
 const state = {
   module: 'category',
-  page: 1,
-  categories: [],
-  category: []
+  categories: null,
+  category: null
 }
 
 const mutations = {
