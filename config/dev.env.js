@@ -4,5 +4,5 @@ const prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  API_URL: '"http://dev.bepgiadinh.com/wp-json/"'
+  API_URL: '"https://www.bepgiadinh.com/wp-json/"'
 })
