@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <a href="#" @click.prevent="bookmarkPost" :class="bookmarkd">Bookmark</a>
+    <div class="btn_bookmark">
+        <a href="#" @click.prevent="bookmarkPost" :class="bookmarkd" class="pull-left">Bookmark</a>
     </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
   },
   computed: {
     bookmarkd() {
-      return this.isbookmark == true ? "bookmarkd" : "";
+      return this.isbookmark == true ? "bookmark" : "";
     }
   },
   methods: {
@@ -26,7 +26,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.bookmarkd {
+.btn_bookmark{
+     display: block;
+    float:left;
+}
+.bookmark {
   color: red;
+
 }
 </style>

@@ -9,14 +9,14 @@
       </div>
     <app-footer></app-footer>
     <app-go-to-top></app-go-to-top>
-    <app-menu-footer></app-menu-footer>
+    <!-- <app-menu-footer></app-menu-footer> -->
   </div>
 </template>
 
 <script>
 import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
-import GoToTop from '@/components/footer/GoToTop';
+import GoToTop from '@/components/partials/to-top-button';
 import MenuFooter from '@/components/partials/menu_footer'
 export default {
   name: 'App',

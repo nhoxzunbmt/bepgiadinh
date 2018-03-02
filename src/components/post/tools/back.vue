@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <a class="btn btn-default" href="#" @click.prevent="back">Back</a>
+    <div class="btn_back">
+        <a class="btn btn-default " href="#" @click.prevent="back">Back</a>
     </div>
 </template>
 
@@ -18,5 +18,8 @@
 </script>
 
 <style scoped>
-
+.btn_back{
+    display: block;
+    float:left;
+}
 </style>

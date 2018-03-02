@@ -5,6 +5,7 @@
          <app-bookmark></app-bookmark>
          <app-love v-if="post" :post_id="post.id"></app-love>
         </div>
+        <br>
 
         <div class="content" v-if="post">
             <b-img :src="getFeaturedImage(post)" fluid/>

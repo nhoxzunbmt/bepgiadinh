@@ -1,11 +1,33 @@
 <template>
     <div>
-        <ul v-if="comments">
-            <li v-for="comment in comments" :key="comment.id">
-                <div v-html="comment.content.rendered"></div>
-            </li>
-        </ul>
-        <br>
+
+    <div class="container" v-if="comments">
+        <div class="row" v-for="comment in comments" :key="comment.id">
+            <div class="comments col-md-9" id="comments">
+                <!-- <h3 class="mb-2">Comments</h3> -->
+                <!-- comment -->
+                <div class="comment mb-2 row">
+
+                  <comment-item :comment="comment"></comment-item>
+ 
+                    
+                    <!-- reply is indented -->
+                    <!-- <div class="comment-reply col-md-11 offset-md-1 col-sm-10 offset-sm-2">
+                              <div class="row">
+                            <comment-item></comment-item>
+                                    </div>
+                  </div> -->
+                  <!-- /reply is indented -->
+                </div>
+                <!-- /comment -->
+
+        
+
+            </div>
+        </div>
+    </div>
+
+   
         {{ user }}
         <br>
         <textarea v-model="message" placeholder="add multiple lines" width="100%"></textarea>
@@ -15,6 +37,8 @@
 </template>
 
 <script>
+
+import CommentItem from '@/components/post/tools/comment-item';
 export default {
   props: {
     comment_post_ID: {
@@ -24,6 +48,9 @@ export default {
         return 1;
       }
     }
+  },
+  components :{
+    CommentItem
   },
   data() {
     return {

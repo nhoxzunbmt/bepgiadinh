@@ -40,7 +40,6 @@ const actions = {
     },
     getUserById: ({ commit }, page) => {
         axios.get(`${API_BASE}wp/v2/posts?order=desc&page=${page}`).then(response => {
-
             commit('LOAD_MORE_COMMENTS', response.data)
         })
     }
@@ -53,11 +52,12 @@ const mutations = {
     LOGIN_SUCCESSS(state,payload) {
         state.isLoading = false
         state.user = payload
+        payload = JSON.stringify(payload)
         Vue.localStorage.set('user',payload)
     },
     USER_CURRENT(state){
         if(Vue.localStorage.get('user')){
-            state.user = Vue.localStorage.get('user')
+            state.user = JSON.parse(Vue.localStorage.get('user'))
         }
         console.log(state.user)
     }

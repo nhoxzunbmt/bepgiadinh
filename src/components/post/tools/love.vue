@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <a href="#" @click.prevent="lovePost" :class="loved">Love</a>
+    <div class="btn_love">
+        <a href="#" @click.prevent="lovePost" :class="loved" class="pull-left">Love</a>
     </div>
 </template>
 
@@ -31,6 +31,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.btn_love {
+  display: block;
+  margin: 0 auto;
+}
 .loved {
   color: red;
 }
