@@ -7,11 +7,13 @@ import store from './store/store'
 import VueLocalStorage from 'vue-localstorage'
 import BootstrapVue from 'bootstrap-vue'
 import VeeValidate from 'vee-validate';
+import Vuetify from 'vuetify'
 
 
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+// import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+import 'vuetify/dist/vuetify.min.css' 
 
 
 Vue.config.productionTip = false
@@ -23,6 +25,8 @@ Vue.use(VueLocalStorage, {
   name: 'ls',
   bind: true
 })
+Vue.use(Vuetify)
+
 
 
 /* eslint-disable no-new */

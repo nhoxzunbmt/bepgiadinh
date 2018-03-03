@@ -1,7 +1,13 @@
 <template>
-  <div class="home">
+
+
+   <v-layout row wrap>
+      <v-flex xs12 sm6 offset-sm3 v-for="cat in categories" :key="cat.id">
+         <post-item :posts="posts"></post-item>
+      </v-flex>
+        <!-- <div class="home">
   
-        <post-item :posts="posts"></post-item>
+       
         <ul>
           <li v-for="cat in categories" :key="cat.id">
             {{ cat.name }}
@@ -10,11 +16,14 @@
 
 
       <a href="#" @click="loadMore">Load More</a>
-  </div>
+  </div> -->
+    </v-layout>
+
+
 </template>
 
 <script>
-import PostItem from "@/components/post/item";
+import PostItem from "@/components/post/item_2";
 export default {
   components: {
     PostItem
