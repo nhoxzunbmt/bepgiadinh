@@ -68,12 +68,11 @@
       </v-layout>
     </v-toolbar>
     <v-content>
-      <v-container fill-height>
+   
   
-
                 <router-view/>
 
-      </v-container>
+    
     </v-content>
   </v-app>
 </template>

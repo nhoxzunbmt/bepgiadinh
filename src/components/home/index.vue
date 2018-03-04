@@ -1,9 +1,9 @@
 <template>
 
-
+   <v-container class="post_full_width">
    <v-layout row wrap>
-      <v-flex xs12 sm6 offset-sm3 v-for="cat in categories" :key="cat.id">
-         <post-item :posts="posts"></post-item>
+      <v-flex xs12 sm6 v-for="post in posts" :key="post.id">
+         <post-item :post="post"></post-item>
       </v-flex>
         <!-- <div class="home">
   
@@ -18,7 +18,7 @@
       <a href="#" @click="loadMore">Load More</a>
   </div> -->
     </v-layout>
-
+  </v-container>
 
 </template>
 
@@ -54,5 +54,7 @@ export default {
 
 
 <style scoped>
-
+  .post_full_width{
+    padding: 0
+  }
 </style>

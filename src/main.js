@@ -9,6 +9,12 @@ import BootstrapVue from 'bootstrap-vue'
 import VeeValidate from 'vee-validate';
 import Vuetify from 'vuetify'
 
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import VueStar from 'vue-star'
+Vue.component('VueStar', VueStar)
+// require styles
+import 'swiper/dist/css/swiper.css'
+
 
 // import 'bootstrap/dist/css/bootstrap.css'
 // import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -26,7 +32,7 @@ Vue.use(VueLocalStorage, {
   bind: true
 })
 Vue.use(Vuetify)
-
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
 
 
 /* eslint-disable no-new */

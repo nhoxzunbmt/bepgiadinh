@@ -1,37 +1,13 @@
 <template>
-    <div class="post_detail">
-        <div>
-         <app-back></app-back>
-         <app-bookmark></app-bookmark>
-         <app-love v-if="post" :post_id="post.id"></app-love>
-        </div>
-        <br>
-
-        <div class="content" v-if="post">
-            <b-img :src="getFeaturedImage(post)" fluid/>
-
-            {{ post.title.rendered }}
-
-            <app-stars></app-stars>
-
-
-
-            <h2>Nguyên liệu</h2>
-            <div v-html="post.custom_fields.nguyen_lieu">
-
-            </div>
-              <h2>Cách làm</h2>
-            <!-- <div class="content" v-html="post.content.rendered">
-            </div> -->
-            <h2>Bình luận</h2>
-            <app-comment :comment_post_ID="post.id"></app-comment>
-
-            <app-login></app-login>
-            
-        </div>
+      <div class="post_detail">
 
  
-        
+ 
+
+      <item-swiper :options="swiperOption" :posts="posts">
+  
+      </item-swiper>
+  
     </div>
 </template>
 
@@ -42,6 +18,11 @@ import Love from "@/components/post/tools/love";
 import Stars from "@/components/post/tools/stars";
 import Comment from '@/components/post/tools/comment';
 import Login from '@/components/login';
+import ItemSwiper from '@/components/post/item_swiper'
+
+import 'swiper/dist/css/swiper.css'
+
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
 export default {
   components: {
     AppBack: Back,
@@ -49,8 +30,12 @@ export default {
     AppBookmark: Bookmark,
     AppStars: Stars,
     AppComment: Comment,
-    AppLogin : Login
+    AppLogin : Login,
+        swiper,
+    swiperSlide,
+    ItemSwiper : ItemSwiper
   },
+
   computed: {
     id() {
       return this.$route.params.id;
@@ -58,11 +43,28 @@ export default {
     post() {
       return this.$store.getters.post;
     },
+        posts() {
+      return this.$store.getters.posts;
+    },
+
     isLoading() {
       return this.$store.getters.isLoading;
+    },
+    swiperOption(){
+        return {
+          slidesPerView: 2,
+          spaceBetween: 0,
+          centeredSlides: false,
+            slidesPerView: 'auto',
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+          }
+        };
     }
   },
   created() {
+    this.$store.dispatch("getPosts");
     this.$store.dispatch("getPost", this.$route.params.id);
     this.$store.dispatch("hideNavbar", true);
   },
@@ -89,4 +91,6 @@ export default {
     }
   }
 }
+
+ 
 </style>
