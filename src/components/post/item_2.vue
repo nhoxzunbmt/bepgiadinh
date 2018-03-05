@@ -2,7 +2,7 @@
       <div v-if="post" class="recipe-card single-recipe">
 
               <vue-star animate="animated bounceIn" color="#F05654">
-    <i slot="icon" class="fa fa-heart">1</i>
+    <i slot="icon" class="post_btn fa fa-heart"></i>
   </vue-star>
             <!-- <img class="recipe-card-img" src="https://lh3.ggpht.com/kiCyWmZBMmZh3PSD6Q5wDQxZekEMZ6bymz8dAR-rSIRhzDa6zojGYE7gBRuT_oKbgaFUQ4QMMMD1JcrDdOnCblY=s2-c-e365" alt="Avocado, Tomato, Edamame, and Red Onion Salad with Cumin-Lime Vinaigrette." height="320px">
             <img class="recipe-card-img full-size" :src="getFeaturedImage(post)" alt="Avocado, Tomato, Edamame, and Red Onion Salad with Cumin-Lime Vinaigrette.">
@@ -215,5 +215,10 @@ a {
     text-align: center;
     z-index: 2;
     right: -6px;
+}
+
+
+.post_btn{
+  font-size:20px;
 }
 </style>

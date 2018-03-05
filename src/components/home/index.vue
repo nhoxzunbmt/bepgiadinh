@@ -2,6 +2,8 @@
 
    <v-container class="post_full_width">
    <v-layout row wrap>
+
+     
       <v-flex xs12 sm6 v-for="post in posts" :key="post.id">
          <post-item :post="post"></post-item>
       </v-flex>
