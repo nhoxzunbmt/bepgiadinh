@@ -5,6 +5,7 @@ import Category from '@/components/category/index';
 import Post from '@/components/post/index';
 import Test from '@/components/test/index2';
 import Test2 from '@/components/test/index2';
+import Analytics from '@/components/test/analytics'
 Vue.use(Router)
 
 export default new Router({
@@ -35,6 +36,11 @@ export default new Router({
           component: Test2,
         }
       ]
+    },
+    {
+      path: '/t-ana',
+      name: 'Ana',
+      component: Analytics
     }
   ]
 })

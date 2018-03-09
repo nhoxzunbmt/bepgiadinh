@@ -11,6 +11,7 @@ import Vuetify from 'vuetify'
 
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import VueStar from 'vue-star'
+import VueAnalytics from 'vue-analytics'
 Vue.component('VueStar', VueStar)
 // require styles
 import 'swiper/dist/css/swiper.css'
@@ -52,6 +53,19 @@ Vue.use(VueLocalStorage, {
 Vue.use(Vuetify)
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
 
+const isProd = process.env.NODE_ENV === 'production'
+
+Vue.use(VueAnalytics, {
+  id: 'Ua-1234-5',
+  router,
+  autoTracking: {
+    exception: true
+  },
+  debug:{
+    enabled: !isProd,
+    sendHitTask: isProd
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({

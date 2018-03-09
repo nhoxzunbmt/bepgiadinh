@@ -68,6 +68,7 @@
     "style-loader": "^0.20.2",
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^0.5.8",
+    "vue-analytics": "^5.9.1",
     "vue-jest": "^1.0.2",
     "vue-lazyload": "^1.2.1",
     "vue-loader": "^13.3.0",
