@@ -54,6 +54,13 @@ Vue.use(Vuetify)
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
 
 const isProd = process.env.NODE_ENV === 'production'
+Vue.axios.defaults.baseURL = 'https://api-demo.websanova.com/api/v1';
+
+Vue.use(require('@websanova/vue-auth'), {
+  auth: require('@websanova/vue-auth/drivers/auth/bearer.js'),
+  http: require('@websanova/vue-auth/drivers/http/axios.1.x.js'),
+  router: require('@websanova/vue-auth/drivers/router/vue-router.2.x.js')
+})
 
 Vue.use(VueAnalytics, {
   id: 'Ua-1234-5',

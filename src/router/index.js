@@ -6,6 +6,9 @@ import Post from '@/components/post/index';
 import Test from '@/components/test/index2';
 import Test2 from '@/components/test/index2';
 import Analytics from '@/components/test/analytics'
+import Auth from '@/components/test/auth'
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -41,6 +44,11 @@ export default new Router({
       path: '/t-ana',
       name: 'Ana',
       component: Analytics
+    },
+    {
+      path: '/auth',
+      name: 'Auth',
+      component: Auth
     }
   ]
 })
