@@ -89,6 +89,14 @@ import abilitiesPlugin from './config/ability-plugin'
 Vue.use(abilitiesPlugin, ability)
 window.ability = ability
 
+
+// import VueChatScroll from 'vue-chat-scroll'
+// Vue.use(VueChatScroll)
+
+// https://github.com/hilongjw/vue-lazyload
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

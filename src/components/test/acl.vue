@@ -20,8 +20,8 @@
     </header>
     <section class="main" v-show="todos.length" v-cloak>
       <input class="toggle-all" type="checkbox" v-model="allDone">
-      <ul class="todo-list">
-        <li v-for="todo in filteredTodos"
+      <ul class="todo-list"  v-chat-scroll>
+        <li v-for="todo in filteredTodos" 
           class="todo"
           :key="todo.id"
           :class="{ completed: todo.completed, editing: todo == editedTodo }">
@@ -120,8 +120,8 @@ export default {
       }
 
       this.todos.push(todoStorage.build(this.newTodo));
-      this.newTodo.title = "";
-      this.newTodo.assignee = "";
+      //this.newTodo.title = "";
+      //this.newTodo.assignee = "";
     },
 
     removeTodo(todo) {
@@ -285,6 +285,7 @@ label[for="toggle-all"] {
   margin: 0;
   padding: 0;
   list-style: none;
+  max-height: 200px;
 }
 
 .todo-list li {
