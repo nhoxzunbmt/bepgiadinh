@@ -12,9 +12,13 @@ import Vuetify from 'vuetify'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import VueStar from 'vue-star'
 import VueAnalytics from 'vue-analytics'
+import VueAuth from 'vue-auth'
 Vue.component('VueStar', VueStar)
 // require styles
 import 'swiper/dist/css/swiper.css'
+
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 
 // import 'bootstrap/dist/css/bootstrap.css'
@@ -52,9 +56,13 @@ Vue.use(VueLocalStorage, {
 })
 Vue.use(Vuetify)
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
+Vue.use(VueAxios, axios)
 
 const isProd = process.env.NODE_ENV === 'production'
 Vue.axios.defaults.baseURL = 'https://api-demo.websanova.com/api/v1';
+
+Vue.router = router
+
 
 Vue.use(require('@websanova/vue-auth'), {
   auth: require('@websanova/vue-auth/drivers/auth/bearer.js'),
@@ -73,6 +81,13 @@ Vue.use(VueAnalytics, {
     sendHitTask: isProd
   }
 })
+
+import ability from './config/ability'
+import abilitiesPlugin from './config/ability-plugin'
+ 
+
+Vue.use(abilitiesPlugin, ability)
+window.ability = ability
 
 /* eslint-disable no-new */
 new Vue({

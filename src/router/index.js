@@ -9,6 +9,21 @@ import Analytics from '@/components/test/analytics'
 import Auth from '@/components/test/auth'
 
 
+
+import Login from '@/components/pages/Login.vue'
+import Account from '@/components/pages/Account.vue'
+import Register from '@/components/pages/Register.vue'
+import Admin from '@/components/pages/Admin.vue'
+
+import Page403 from '@/components/pages/403.vue'
+import Page404 from '@/components/pages/404.vue'
+
+import Products from '@/components/pages/admin/Products.vue'
+import Product from '@/components/pages/admin/Product.vue'
+import ProductInfo from '@/components/pages/admin/ProductInfo.vue'
+import ACL from '@/components/test/acl.vue'
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -17,6 +32,12 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    
+     {
+      path: '/acl',
+      name: 'acl',
+      component: ACL
     },
     {
       path: '/category',
@@ -40,15 +61,89 @@ export default new Router({
         }
       ]
     },
-    {
-      path: '/t-ana',
-      name: 'Ana',
-      component: Analytics
-    },
-    {
-      path: '/auth',
-      name: 'Auth',
-      component: Auth
-    }
+    // {
+    //   path: '/t-ana',
+    //   name: 'Ana',
+    //   component: Analytics
+    // },
+    // {
+    //   path: '/auth',
+    //   name: 'Auth',
+    //   component: Auth
+    // },
+    // {
+    //   path: '/login',
+    //   name: 'login',
+    //   component: Login,
+    //   meta: { auth: false }
+    // }, {
+    //   path: '/login/:type',
+    //   name: 'oauth2-type',
+    //   component: require('@/components/pages/Oauth2.vue')
+    // }, {
+    //   path: '/register',
+    //   name: 'register',
+    //   component: Register,
+    //   meta: { auth: false }
+    // }, {
+    //   path: '/oauth1',
+    //   name: 'oauth1',
+    //   component: require('@/components/pages/Oauth1.vue')
+    // }, {
+    //   path: '/oauth2',
+    //   name: 'oauth2',
+    //   component: require('@/components/pages/Oauth2.vue')
+    // }, {
+    //   path: '/account',
+    //   name: 'account',
+    //   component: Account,
+    //   meta: { auth: true }
+    // }, {
+    //   path: '/async',
+    //   name: 'async',
+    //   component: function (resolve) { require(['@/components/pages/Async.vue'], resolve); }
+    // }, {
+    //   path: '/admin',
+    //   name: 'admin',
+    //   component: Admin,
+    //   meta: { auth: { roles: 'admin', redirect: { name: 'default' }, forbiddenRedirect: '/403' } },
+    //   children: [{
+    //     patah: 'products',
+    //     name: 'admin-products',
+    //     component: Products,
+    //     children: [{
+    //       path: ':product_id',
+    //       name: 'admin-product',
+    //       component: Product,
+    //       children: [{
+    //         path: 'info',
+    //         name: 'admin-product-info',
+    //         component: ProductInfo,
+    //         meta: { auth: undefined }
+    //       }, {
+    //         path: 'media',
+    //         name: 'admin-product-media',
+    //         component: require('@/components/pages/admin/ProductMedia.vue')
+    //       }]
+    //     }]
+    //   }]
+    // }, {
+    //   path: '/users',
+    //   name: 'users',
+    //   component: require('@/components/pages/Users.vue'),
+    //   meta: { auth: ['admin'] }
+    // }, {
+    //   path: '/404',
+    //   name: 'error-404',
+    //   component: Page404
+    // }, {
+    //   path: '/403',
+    //   name: 'error-403',
+    //   component: Page403
+    // }, {
+    //   path: '/502',
+    //   name: 'error-502',
+    //   component: require('@/components/pages/502.vue')
+    // }
   ]
 })

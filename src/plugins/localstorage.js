@@ -1,4 +1,5 @@
 import VueLocalStorage from 'vue-localstorage'
+import Vue from 'Vue'
 
 Vue.use(VueLocalStorage)
 // Or you can specify any other name and use it via this.$ls, this.$whatEverYouWant
@@ -17,3 +18,5 @@ var todoStorage = {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
   }
 }
+
+export default todoStorage
