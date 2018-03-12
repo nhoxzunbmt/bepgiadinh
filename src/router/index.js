@@ -22,8 +22,12 @@ import Products from '@/components/pages/admin/Products.vue'
 import Product from '@/components/pages/admin/Product.vue'
 import ProductInfo from '@/components/pages/admin/ProductInfo.vue'
 import ACL from '@/components/test/acl.vue'
+import ZONE from '@/components/test/zone.vue'
 
+import OV from '@/components/test/overdrive.vue'
+import OV_DETAIL from '@/components/test/overdrive-detail.vue'
 
+import Transitions from '@/components/test/transitions.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -33,12 +37,39 @@ export default new Router({
       name: 'Home',
       component: Home
     },
-    
+    {
+      path: '/test',
+      name: 'Test',
+      component: Transitions,
+      children: [
+        {
+          path: '/index2',
+          name: 'Test2',
+          component: Test2,
+        }
+      ]
+    },
+    {
+      path: '/overdive',
+      name: 'overdive',
+      component: OV
+    },
+    {
+      path: '/overdive-detail/:slug/',
+      name: 'overdive_detail',
+      component: OV_DETAIL
+    },
+    {
+      path: '/zone',
+      name: 'zone',
+      component: ZONE
+    },
      {
       path: '/acl',
       name: 'acl',
       component: ACL
     },
+
     {
       path: '/category',
       name: 'Category',
@@ -49,18 +80,7 @@ export default new Router({
       name: 'Post',
       component: Post
     },
-    {
-      path: '/test',
-      name: 'Test',
-      component: Test,
-      children: [
-        {
-          path: '/index2',
-          name: 'Test2',
-          component: Test2,
-        }
-      ]
-    },
+   
     // {
     //   path: '/t-ana',
     //   name: 'Ana',

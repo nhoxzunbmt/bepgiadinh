@@ -12,7 +12,7 @@ import Vuetify from 'vuetify'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import VueStar from 'vue-star'
 import VueAnalytics from 'vue-analytics'
-import VueAuth from 'vue-auth'
+// import VueAuth from 'vue-auth'
 Vue.component('VueStar', VueStar)
 // require styles
 import 'swiper/dist/css/swiper.css'
@@ -70,17 +70,17 @@ Vue.use(require('@websanova/vue-auth'), {
   router: require('@websanova/vue-auth/drivers/router/vue-router.2.x.js')
 })
 
-Vue.use(VueAnalytics, {
-  id: 'Ua-1234-5',
-  router,
-  autoTracking: {
-    exception: true
-  },
-  debug:{
-    enabled: !isProd,
-    sendHitTask: isProd
-  }
-})
+// Vue.use(VueAnalytics, {
+//   id: 'Ua-1234-5',
+//   router,
+//   autoTracking: {
+//     exception: true
+//   },
+//   debug:{
+//     enabled: !isProd,
+//     sendHitTask: isProd
+//   }
+// })
 
 import ability from './config/ability'
 import abilitiesPlugin from './config/ability-plugin'
@@ -96,6 +96,15 @@ window.ability = ability
 // https://github.com/hilongjw/vue-lazyload
 import VueLazyload from 'vue-lazyload'
 Vue.use(VueLazyload)
+
+
+// import Overdrive from 'vue-overdrive'
+// Vue.use(Overdrive)
+
+
+import Transitions from 'vue2-transitions'
+Vue.use(Transitions)
+
 
 /* eslint-disable no-new */
 new Vue({
