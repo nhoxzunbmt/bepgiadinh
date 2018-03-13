@@ -106,6 +106,37 @@ import Transitions from 'vue2-transitions'
 Vue.use(Transitions)
 
 
+
+//https://github.com/egoist/vue-timeago
+import VueTimeago from 'vue-timeago'
+Vue.use(VueTimeago, {
+  name: 'timeago', // component name, `timeago` by default
+  locale: 'en-US',
+  locales: {
+    // you will need json-loader in webpack 1
+    'en-US': require('vue-timeago/locales/en-US.json')
+  }
+})
+
+
+
+//https://github.com/michalsnik/vue-content-placeholders
+import VueContentPlaceholders from 'vue-content-placeholders'
+Vue.use(VueContentPlaceholders)
+
+
+
+//https://github.com/nicolasbeauvais/vue-social-sharing
+import SocialSharing  from 'vue-social-sharing';
+Vue.use(SocialSharing)
+
+
+import infiniteScroll from 'vue-infinite-scroll'
+Vue.use(infiniteScroll)
+
+
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

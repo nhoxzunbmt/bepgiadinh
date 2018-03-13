@@ -28,6 +28,10 @@ import OV from '@/components/test/overdrive.vue'
 import OV_DETAIL from '@/components/test/overdrive-detail.vue'
 
 import Transitions from '@/components/test/transitions.vue'
+import Rating from '@/components/test/rating.vue'
+import Share from '@/components/test/share.vue'
+import Loading from '@/components/test/loading.vue'
+import Scroll from '@/components/test/scroll.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -40,7 +44,7 @@ export default new Router({
     {
       path: '/test',
       name: 'Test',
-      component: Transitions,
+      component: Scroll,
       children: [
         {
           path: '/index2',
