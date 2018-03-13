@@ -72,18 +72,18 @@ export default {
       content: "",
       headers: [
         {
-          text: 'Title',
-          align: 'left',
+          text: "Title",
+          align: "left",
           sortable: false,
-          value: 'name'
+          value: "name"
         },
         {
-          text: 'Content',
-          align: 'center',
+          text: "Content",
+          align: "center",
           sortable: false,
-          value: 'content'
+          value: "content"
         },
-            { text: 'Actions', value: 'name', sortable: false        ,align: 'center' }
+        { text: "Actions", value: "name", sortable: false, align: "center" }
       ]
     };
   },
@@ -105,19 +105,19 @@ export default {
       });
     },
     showNote(id) {
-        let note = this.notes.find(n => n.id === id)
-        this.title = note.title;
-        this.content = note.content
+      let note = this.notes.find(n => n.id === id);
+      this.title = note.title;
+      this.content = note.content;
     },
     editNote(id) {
-        let note = this.$firebaseRefs.notes.child(id);
-        note.child("title").set(this.title);
-        note.child("content").set(this.content);
-        alert('Update Successfully!')
+      let note = this.$firebaseRefs.notes.child(id);
+      note.child("title").set(this.title);
+      note.child("content").set(this.content);
+      alert("Update Successfully!");
     },
     deleteNote(id) {
-            let note = this.notes.find(n => n.id === id)
-        this.$firebaseRefs.notes.child(note['.key']).remove()
+      let note = this.notes.find(n => n.id === id);
+      this.$firebaseRefs.notes.child(note[".key"]).remove();
     }
   }
 };
