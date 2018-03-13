@@ -134,6 +134,9 @@ Vue.use(SocialSharing)
 import infiniteScroll from 'vue-infinite-scroll'
 Vue.use(infiniteScroll)
 
+import Firebase from 'firebase'
+import VueFire from 'vuefire'
+Vue.use(VueFire)
 
 
 

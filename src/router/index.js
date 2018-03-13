@@ -32,6 +32,8 @@ import Rating from '@/components/test/rating.vue'
 import Share from '@/components/test/share.vue'
 import Loading from '@/components/test/loading.vue'
 import Scroll from '@/components/test/scroll.vue'
+
+import FB from '@/components/firebase/index.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -40,6 +42,18 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/firebase',
+      name: 'FB',
+      component: FB,
+      children: [
+        {
+          path: '/add',
+          name: 'FB_ADD',
+          component: FB,
+        }
+      ]
     },
     {
       path: '/test',
