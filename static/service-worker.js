@@ -1,5 +1,5 @@
-var NOTIFICATION_ENDPOINT = "/example-fetch.json";
-var URL_TO_DEFAULT_ICON = "/images/icon-192x192.png";
+var NOTIFICATION_ENDPOINT = "/static/example-fetch.json";
+var URL_TO_DEFAULT_ICON = "/static/images/icon-192x192.png";
 
 self.addEventListener('push', function(event) {
   console.log('Received a push message', event);

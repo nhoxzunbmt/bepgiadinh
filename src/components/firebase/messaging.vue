@@ -71,6 +71,7 @@ export default {
     registerForPush: function() {
       navigator.serviceWorker.ready.then(
         function(serviceWorkerRegistration) {
+          console.log('Xy ly serviceWorkerRegistration');
           serviceWorkerRegistration.pushManager
             .subscribe({
               userVisibleOnly: true // required for the current version of browser push
@@ -120,6 +121,7 @@ export default {
         function(result) {
             console.log(result,result.exists());
           if (!result.exists()) {
+                  console.log('Xy ly registerForPush');
             this.registerForPush();
           } else {
             this.buttonText = "Already Registered";
