@@ -1,75 +1,66 @@
 <template>
-    <div>
+  <div>
 
+    <v-container fluid>
+      <v-layout row>
+        <v-flex xs12>
 
-  <v-container fluid>
-    <v-layout row>
-      <v-flex xs6>
+          <v-alert type="success" :value="isSuccess">
+            {{ message }}
+          </v-alert>
 
-    <v-text-field
-          name="title"
-          label="Title"
-          id="title"
-          v-model="title"
-        ></v-text-field>
+          <v-alert type="error" :value="isError">
+            {{ message }}
+          </v-alert>
 
-    <v-text-field
-          name="content"
-          label="Content"
-          id="content"
-          v-model="content"
-        ></v-text-field>
+          <v-text-field name="title" label="Title" id="title" v-model="title"></v-text-field>
 
+          <v-text-field name="content" label="Content" id="content" v-model="content"></v-text-field>
 
-            <v-btn color="success" @click="addNote">Add</v-btn>
+          <v-btn color="success" class="btnAdd" @click="addNote" v-if="note == null">Add</v-btn>
+          <v-btn color="success" @click="editNote" v-if="note != null">Save</v-btn>
 
-<v-data-table
-      :headers="headers"
-      :items="notes"
-      hide-actions
-      class="elevation-1"
-    >
-      <template slot="items" slot-scope="props">
-        <td>{{ props.item.title }}</td>
-        
-         <td class="text-xs-center">{{ props.item.content }}</td>
+          <br>
+          <v-data-table :headers="headers" :items="notes" :search="search" :pagination.sync="pagination" :total-items="totalItems" :loading="loading" class="elevation-1">
+            <template slot="items" slot-scope="props">
+              <td>{{ props.item.title }}</td>
 
-            <td class="justify-center layout px-0">
-          <v-btn icon class="mx-0" @click="editItem(props.item)">
-            <v-icon color="teal">edit</v-icon>
-          </v-btn>
-          <v-btn icon class="mx-0" @click="deleteItem(props.item)">
-            <v-icon color="pink">delete</v-icon>
-          </v-btn>
-        </td>
-      </template>
-    </v-data-table>
+              <td class="text-xs-center">{{ props.item.content }}</td>
 
+              <td class="justify-center layout px-0">
+                <v-btn icon class="mx-0" @click="showNote(props.item.id)">
+                  <v-icon color="teal">edit</v-icon>
+                </v-btn>
+                <v-btn icon class="mx-0" @click="deleteNote(props.item.id)">
+                  <v-icon color="pink">delete</v-icon>
+                </v-btn>
+              </td>
+            </template>
+          </v-data-table>
 
-
-            <ul class="notes_items">
-                <li v-for="note in notes" :key="note.id">
-                    {{ note.title }} | 
-                    <button @click="showNote(note.id)">Edit</button>
-                    <button @click="editNote(note.id)">Save</button>
-                    <button @click="deleteNote(note.id)">Delete</button>
-                </li>
-            </ul>
-      </v-flex>
-    </v-layout>
-  </v-container>
-    </div>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </div>
 </template>
 
 <script>
 import { db } from "@/plugins/firebase";
 import uuidv4 from "uuid/v4";
-     
+
 export default {
   data() {
     return {
+      search: "",
+      pagination: {},
+      totalItems: 0,
+      loading: false,
       title: "",
       content: "",
+      message: "",
+      todo: [],
+      isSuccess: false,
+      isError: false,
       headers: [
         {
           text: "Title",
@@ -89,7 +80,7 @@ export default {
   },
   firebase: {
     notes: {
-      source: db.ref("notes"),
+      source: db.ref("notes").limitToLast(10),
       // Optional, allows you to handle any errors.
       cancelCallback(err) {
         console.error(err);
@@ -108,28 +99,27 @@ export default {
       let note = this.notes.find(n => n.id === id);
       this.title = note.title;
       this.content = note.content;
+
+      this.note = note;
     },
-    editNote(id) {
-      let note = this.$firebaseRefs.notes.child(id);
+    editNote() {
+      let note = this.$firebaseRefs.notes.child(this.note[".key"]);
       note.child("title").set(this.title);
       note.child("content").set(this.content);
-      alert("Update Successfully!");
+      this.message = "Update Successfully!";
+
+      this.isSuccess = true;
+      this.isError = false;
     },
-    deleteNote(id) {
-      let note = this.notes.find(n => n.id === id);
-      this.$firebaseRefs.notes.child(note[".key"]).remove();
+    deleteNote() {
+      this.$firebaseRefs.notes.child(this.note[".key"]).remove();
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.notes_items {
-  li {
-    display: block;
-    float: left;
-    width: 100%;
-    margin-bottom: 10px;
-  }
+.btnAdd {
+  margin-left: 0;
 }
 </style>

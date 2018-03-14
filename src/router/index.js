@@ -34,6 +34,9 @@ import Loading from '@/components/test/loading.vue'
 import Scroll from '@/components/test/scroll.vue'
 
 import FB from '@/components/firebase/index.vue'
+import AUTH1 from '@/components/firebase/auth.vue'
+import FB_MS from '@/components/firebase/messaging.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -42,6 +45,17 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    
+    {
+      path: '/fb-noti',
+      name:'FB_MS',
+      component: FB_MS
+    },
+    {
+      path: '/auth1',
+      name:'AUTH1',
+      component: AUTH1
     },
     {
       path: '/firebase',
@@ -53,6 +67,7 @@ export default new Router({
           name: 'FB_ADD',
           component: FB,
         }
+    
       ]
     },
     {
