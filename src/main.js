@@ -144,6 +144,11 @@ Vue.use(VueFire)
 
 
 
+//http://izitoast.marcelodolce.com/
+import Izitoast from 'izitoast'
+Vue.use(Izitoast)
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
