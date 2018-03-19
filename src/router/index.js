@@ -8,8 +8,6 @@ import Test2 from '@/components/test/index2';
 import Analytics from '@/components/test/analytics'
 import Auth from '@/components/test/auth'
 
-
-
 import Login from '@/components/pages/Login.vue'
 import Account from '@/components/pages/Account.vue'
 import Register from '@/components/pages/Register.vue'
@@ -44,7 +42,7 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: () => import('@/components/home/index'),
     },
     
     {
