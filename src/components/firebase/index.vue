@@ -61,6 +61,7 @@ export default {
       todo: [],
       isSuccess: false,
       isError: false,
+      note: false,
       headers: [
         {
           text: "Title",
