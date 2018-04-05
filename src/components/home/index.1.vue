@@ -1,8 +1,26 @@
 <template>
 
-<div>
-  123
-</div>
+   <v-container class="post_full_width">
+   <v-layout row wrap>
+
+     
+      <v-flex xs12 sm6 v-for="post in posts" :key="post.id">
+         <post-item :post="post"></post-item>
+      </v-flex>
+        <!-- <div class="home">
+  
+       
+        <ul>
+          <li v-for="cat in categories" :key="cat.id">
+            {{ cat.name }}
+          </li>
+        </ul>
+
+
+      <a href="#" @click="loadMore">Load More</a>
+  </div> -->
+    </v-layout>
+  </v-container>
 
 </template>
 

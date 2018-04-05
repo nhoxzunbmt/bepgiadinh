@@ -126,26 +126,26 @@ const webpackConfig = merge(baseWebpackConfig, {
     ]),
 
     // MY CUSTOM
-    new SWPrecacheWebpackPlugin({
-      cacheId: 'bep-gia-dinh',
-      filename: 'service-worker.js',
-      staticFileGlobs: ['dist/**/*.{js,html,css}'],
-      minify: true,
-      stripPrefix: 'dist/',
-      runtimeCaching: [
-      {
-        urlPattern: /^https:\/\/fonts\.googleapis\.com\//,
-        handler: 'cacheFirst'
-      },
-      {
-        urlPattern: /^https:\/\/fonts\.gstatic\.com\//,
-        handler: 'cacheFirst'
-      },
-      {
-        urlPattern: /^https:\/\/www\.bepgiadinh\.com\//,
-        handler: 'cacheFirst'
-      }]
-    })
+    // new SWPrecacheWebpackPlugin({
+    //   cacheId: 'bep-gia-dinh',
+    //   filename: 'service-worker.js',
+    //   staticFileGlobs: ['dist/**/*.{js,html,css}'],
+    //   minify: true,
+    //   stripPrefix: 'dist/',
+    //   runtimeCaching: [
+    //   {
+    //     urlPattern: /^https:\/\/fonts\.googleapis\.com\//,
+    //     handler: 'cacheFirst'
+    //   },
+    //   {
+    //     urlPattern: /^https:\/\/fonts\.gstatic\.com\//,
+    //     handler: 'cacheFirst'
+    //   },
+    //   {
+    //     urlPattern: /^https:\/\/www\.bepgiadinh\.com\//,
+    //     handler: 'cacheFirst'
+    //   }]
+    // })
 
 
 

@@ -20,31 +20,34 @@ import 'swiper/dist/css/swiper.css'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+// import './assets/css/plugin.css' 
+import './assets/css/main.css' 
+
 
 // import 'bootstrap/dist/css/bootstrap.css'
 // import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-import 'vuetify/dist/vuetify.min.css' 
+// import 'vuetify/dist/vuetify.min.css' 
 
-import { register } from 'register-service-worker'
+// import { register } from 'register-service-worker'
 
-register('/static/service-worker.js', {
-  ready () {
-    console.log('Service worker is active.')
-  },
-  cached () {
-    console.log('Content has been cached for offline use.')
-  },
-  updated () {
-    console.log('New content is available; please refresh.')
-  },
-  offline () {
-    console.log('No internet connection found. App is running in offline mode.')
-  },
-  error (error) {
-    console.error('Error during service worker registration:', error)
-  }
-})
+// register('/static/service-worker.js', {
+//   ready () {
+//     console.log('Service worker is active.')
+//   },
+//   cached () {
+//     console.log('Content has been cached for offline use.')
+//   },
+//   updated () {
+//     console.log('New content is available; please refresh.')
+//   },
+//   offline () {
+//     console.log('No internet connection found. App is running in offline mode.')
+//   },
+//   error (error) {
+//     console.error('Error during service worker registration:', error)
+//   }
+// })
 Vue.config.productionTip = false
 
 Vue.use(VeeValidate);
@@ -94,16 +97,16 @@ window.ability = ability
 // Vue.use(VueChatScroll)
 
 // https://github.com/hilongjw/vue-lazyload
-import VueLazyload from 'vue-lazyload'
-Vue.use(VueLazyload)
+// import VueLazyload from 'vue-lazyload'
+// Vue.use(VueLazyload)
 
 
 // import Overdrive from 'vue-overdrive'
 // Vue.use(Overdrive)
 
 
-import Transitions from 'vue2-transitions'
-Vue.use(Transitions)
+// import Transitions from 'vue2-transitions'
+// Vue.use(Transitions)
 
 
 
@@ -121,32 +124,32 @@ Vue.use(VueTimeago, {
 
 
 //https://github.com/michalsnik/vue-content-placeholders
-import VueContentPlaceholders from 'vue-content-placeholders'
-Vue.use(VueContentPlaceholders)
+// import VueContentPlaceholders from 'vue-content-placeholders'
+// Vue.use(VueContentPlaceholders)
 
 
 
 //https://github.com/nicolasbeauvais/vue-social-sharing
-import SocialSharing  from 'vue-social-sharing';
-Vue.use(SocialSharing)
+// import SocialSharing  from 'vue-social-sharing';
+// Vue.use(SocialSharing)
 
 
-import infiniteScroll from 'vue-infinite-scroll'
-Vue.use(infiniteScroll)
+// import infiniteScroll from 'vue-infinite-scroll'
+// Vue.use(infiniteScroll)
 
-import Firebase from 'firebase'
-import VueFire from 'vuefire'
-
-
+// import Firebase from 'firebase'
+// import VueFire from 'vuefire'
 
 
-Vue.use(VueFire)
+
+
+// Vue.use(VueFire)
 
 
 
 //http://izitoast.marcelodolce.com/
-import Izitoast from 'izitoast'
-Vue.use(Izitoast)
+// import Izitoast from 'izitoast'
+// Vue.use(Izitoast)
 
 
 /* eslint-disable no-new */
