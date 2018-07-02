@@ -1,7 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './App'
+import App from './AppWeb'
 import router from './router'
 import store from './store/store'
 import VueLocalStorage from 'vue-localstorage'
@@ -11,7 +11,7 @@ import Vuetify from 'vuetify'
 
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import VueStar from 'vue-star'
-import VueAnalytics from 'vue-analytics'
+// import VueAnalytics from 'vue-analytics'
 // import VueAuth from 'vue-auth'
 Vue.component('VueStar', VueStar)
 // require styles
@@ -21,7 +21,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 
 // import './assets/css/plugin.css' 
-import './assets/css/main.css' 
+import './assets/css/main.css'
 
 
 // import 'bootstrap/dist/css/bootstrap.css'
@@ -70,7 +70,13 @@ Vue.router = router
 Vue.use(require('@websanova/vue-auth'), {
   auth: require('@websanova/vue-auth/drivers/auth/bearer.js'),
   http: require('@websanova/vue-auth/drivers/http/axios.1.x.js'),
-  router: require('@websanova/vue-auth/drivers/router/vue-router.2.x.js')
+  router: require('@websanova/vue-auth/drivers/router/vue-router.2.x.js'),
+  facebookOauth2Data: {
+    clientId: '229452330876668'
+  },
+  googleOauth2Data: {
+    clientId: '547886745924-4vrbhl09fr3t771drtupacct6f788566.apps.googleusercontent.com'
+  }
 })
 
 // Vue.use(VueAnalytics, {
@@ -87,7 +93,7 @@ Vue.use(require('@websanova/vue-auth'), {
 
 import ability from './config/ability'
 import abilitiesPlugin from './config/ability-plugin'
- 
+
 
 Vue.use(abilitiesPlugin, ability)
 window.ability = ability

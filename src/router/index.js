@@ -34,7 +34,8 @@ import Scroll from '@/components/test/scroll.vue'
 import FB from '@/components/firebase/index.vue'
 import AUTH1 from '@/components/firebase/auth.vue'
 import FB_MS from '@/components/firebase/messaging.vue'
-
+import Oauth2 from '@/components/pages/Oauth2.vue'
+import Oauth3 from '@/components/pages/Oauth3.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -42,17 +43,17 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: () => import('@/components/home/index'),
+      component: Home
     },
-    
+
     {
       path: '/fb-noti',
-      name:'FB_MS',
+      name: 'FB_MS',
       component: FB_MS
     },
     {
       path: '/auth1',
-      name:'AUTH1',
+      name: 'AUTH1',
       component: AUTH1
     },
     {
@@ -65,7 +66,7 @@ export default new Router({
           name: 'FB_ADD',
           component: FB,
         }
-    
+
       ]
     },
     {
@@ -95,7 +96,7 @@ export default new Router({
       name: 'zone',
       component: ZONE
     },
-     {
+    {
       path: '/acl',
       name: 'acl',
       component: ACL
@@ -111,7 +112,16 @@ export default new Router({
       name: 'Post',
       component: Post
     },
-   
+    {
+      path: '/login/:type',
+      name: 'facebooklogin',
+      component: Oauth2
+  },
+    {
+      path: '/oauth2',
+      name: 'oauth2',
+      component: Oauth2
+    }
     // {
     //   path: '/t-ana',
     //   name: 'Ana',
