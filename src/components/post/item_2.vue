@@ -204,7 +204,6 @@ a {
     -moz-osx-font-smoothing: grayscale;
     -ms-font-smoothing: antialiased;
     -o-font-smoothing: antialiased;
-    font-smoothing: antialiased;
     font-family: sans-serif;
     font-weight: inherit;
     background: #fff;
