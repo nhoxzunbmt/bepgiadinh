@@ -62,7 +62,7 @@ Vue.use(VueAwesomeSwiper, /* { default global options } */)
 Vue.use(VueAxios, axios)
 
 const isProd = process.env.NODE_ENV === 'production'
-Vue.axios.defaults.baseURL = 'https://api-demo.websanova.com/api/v1';
+Vue.axios.defaults.baseURL = 'https://tool.webnew.vn/api/v1';
 
 Vue.router = router
 
@@ -72,7 +72,7 @@ Vue.use(require('@websanova/vue-auth'), {
   http: require('@websanova/vue-auth/drivers/http/axios.1.x.js'),
   router: require('@websanova/vue-auth/drivers/router/vue-router.2.x.js'),
   facebookOauth2Data: {
-    clientId: '229452330876668'
+    clientId: '1898485380214435'
   },
   googleOauth2Data: {
     clientId: '547886745924-4vrbhl09fr3t771drtupacct6f788566.apps.googleusercontent.com'
