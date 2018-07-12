@@ -15,47 +15,62 @@
             <b>NOTE:</b> Google will not work since it's domain set is very restricted but the code is setup as a sample (in the end they all work the same).
         </div>
 
-        <div v-show="code && type">
+        <div v-show="!is_success && code && type">
             Verifying {{ type }} code...
+        </div>
+
+        <div v-show="is_success">
+            Login Successfully!
         </div>
     </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                context: 'oauth2 context',
-                code: this.$route.query.code,
-                type: this.$route.params.type
-            };
-        },
-        mounted() {
+import fb from "@/config/social";
+import axios from "axios";
+export default {
+  data() {
+    return {
+      context: "oauth2 context",
+      code: this.$route.query.code,
+      type: this.$route.params.type,
+      is_success : false
+    };
+  },
+  mounted() {
+    if (this.code) {
+      const payload = {
+        client_id: fb.client_id,
+        client_secret: fb.client_secret,
+        redirect_uri: fb.redirect_uri,
+        code: this.code
+      };
 
-            if (this.code) {
-           
-                this.$auth.oauth2({
-                    code: true,
-                    provider: this.type,
-                    params: {
-                        code: this.code,
-                    },
-                    success: function(res) {
-                        console.log('success ' + this.context);
-                    },
-                    error: function (res) {
-                        console.log('error ' + this.context);
-                    }
-                });
-            }
-        },
-
-        methods: {
-            social(type) {
-                this.$auth.oauth2({
-                    provider: type || this.type
-                });
-            }
-        }
+      axios
+        .get("https://graph.facebook.com/v2.4/oauth/access_token", {
+          params: payload
+        })
+        .then(response => {
+          this.login(response.data.access_token);
+        });
     }
+  },
+
+  methods: {
+    social(type) {
+      this.$auth.oauth2({
+        provider: type || this.type
+      });
+    },
+    login(access_token) {
+      const payload = {
+        access_token: access_token
+      };
+      axios.get("/login/facebook", { params: payload }).then(response => {
+        console.log(response.data);
+        this.is_success = true;
+      });
+    }
+  }
+};
 </script>

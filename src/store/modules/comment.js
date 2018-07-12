@@ -45,7 +45,7 @@ const actions = {
     addComment: ({ commit }, payload) => {
         commit(ADD_COMMENT)
         const wp_username = 'thanhloi@ringier.com.vn'
-        const wp_password = '530825'
+        const wp_password = '123456'
         const config2 = {
             headers : {
                 'Authorization': 'Basic ' + btoa(wp_username + ":" + wp_password)
